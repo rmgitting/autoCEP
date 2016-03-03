@@ -72,6 +72,7 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
         jSeparator4 = new javax.swing.JSeparator();
         progressBar = new javax.swing.JProgressBar();
         pauseBtn = new javax.swing.JToggleButton();
+        minMaxChckBox = new javax.swing.JCheckBox();
         mainMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         selectTrainingMenuItem = new javax.swing.JMenuItem();
@@ -98,7 +99,7 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,41 +163,51 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
             }
         });
 
+        minMaxChckBox.setText("Default value for min and max?");
+        minMaxChckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minMaxChckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(minShapeletLengthSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                            .addComponent(maxShapeletLengthSpinner))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(threadsChckBox)
-                            .addComponent(extractShapeletBtn)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(thresholdClassRadioBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(violationThresholdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(classInCSVRadioBtn))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(minShapeletLengthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(maxShapeletLengthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(threadsChckBox)
+                .addGap(30, 30, 30))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(thresholdClassRadioBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(violationThresholdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(classInCSVRadioBtn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(pauseBtn)
                 .addGap(161, 161, 161))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(minMaxChckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(extractShapeletBtn)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,14 +228,20 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(maxShapeletLengthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(extractShapeletBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(pauseBtn))
+                    .addComponent(maxShapeletLengthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(minMaxChckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pauseBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(extractShapeletBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         fileMenu.setText("File");
@@ -364,6 +381,11 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
         }
         int minL = (int) minShapeletLengthSpinner.getValue();
         int maxL = (int) maxShapeletLengthSpinner.getValue();
+         if(minMaxChckBox.isSelected()){
+            minL = 1;
+            maxL = getMinLogLength();
+            
+        }
         if (minL > maxL) {
             JOptionPane.showMessageDialog(this, "Min Shapelet Length needs to be smaller than the maximum length", "Shapelet Length Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -430,6 +452,10 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
         }
     }//GEN-LAST:event_pauseBtnActionPerformed
 
+    private void minMaxChckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minMaxChckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minMaxChckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -479,6 +505,7 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
     private javax.swing.JMenuItem logUnifierMenuItem;
     private javax.swing.JMenuBar mainMenuBar;
     private javax.swing.JSpinner maxShapeletLengthSpinner;
+    private javax.swing.JCheckBox minMaxChckBox;
     private javax.swing.JSpinner minShapeletLengthSpinner;
     private javax.swing.JToggleButton pauseBtn;
     private javax.swing.JProgressBar progressBar;
@@ -517,6 +544,8 @@ public class ShapeletTrainerFrame extends javax.swing.JFrame implements Invoker 
                 reader = new CSVReader(new FileReader(f));
                 log.setData(reader.readAll());
                 log = setClassificationClass(log);
+                if(log.getData().size() < getMinLogLength())
+                    setMinLogLength(log.getData().size());
                 if (log.getData().size() >= (int) maxShapeletLengthSpinner.getValue()) {
                     trainingData.add(log);
                 }
